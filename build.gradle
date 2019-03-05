@@ -45,9 +45,9 @@ repositories {
 
 dependencies {
   	// 컴파일시에만 포함되며, war 압축시에는 제외된다.
-    providedCompile ('javax.servlet:java.servlet-api:${version.servletAPI}')    
+    providedCompile ('javax.servlet:javax.servlet-api:3.1.0')    
     
-    compile ('org.springframework:spring-webmvc:4.1.6.RELEASE')
+    compile ('org.springframework:spring-webmvc:4.3.1.RELEASE')
     compile 'org.slf4j:slf4j-api:$version.slf4j'
     compile group:'commons-collections', name:'commons-collections',version:'$version.CommonsCollections' 
     compile ('javax.servlet:jstl:1.2')
