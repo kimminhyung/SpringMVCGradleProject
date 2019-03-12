@@ -19,11 +19,11 @@ version='1.0'
 List lst = new ArrayList()
 
 def version = [
- spring:'4.1.6.RELEASE',
- servletAPI:'3.1.0',
- commonsCollections:'3.2.1',
- junit:'4.12',
- slf4j:'1.7.22'
+	 spring:'4.1.6.RELEASE',
+	 servletAPI:'3.1.0',
+	 commonsCollections:'3.2.1',
+	 junit:'4.12',
+	 slf4j:'1.7.22'
 ]
 
 eclipse {
@@ -45,12 +45,21 @@ repositories {
 
 dependencies {
   	// 컴파일시에만 포함되며, war 압축시에는 제외된다.
-    providedCompile ('javax.servlet:javax.servlet-api:3.1.0')    
-    
-    compile ('org.springframework:spring-webmvc:4.3.1.RELEASE')
-    compile 'org.slf4j:slf4j-api:$version.slf4j'
+    providedCompile ('javax.servlet:javax.servlet-api:3.1.0')  
+    compile ('org.springframework:spring-webmvc:4.3.1.RELEASE'){
+		exclude module:'commons-logging'
+	}
     compile group:'commons-collections', name:'commons-collections',version:'$version.CommonsCollections' 
     compile ('javax.servlet:jstl:1.2')
+ 
+    //slf4j, log4j 설정
+    compile 'org.slf4j:jcl-over-slf4j:1.5.8'
+    compile 'org.slf4j:slf4j-log4j12:1.5.8'
+    compile ('org.slf4j:slf4j-api:1.5.8')
+    compile ('org.apache.logging.log4j:log4j-api:1.2.14')
+	compile ('org.apache.logging.log4j:log4j-core:1.2.14')
+	compile ('org.apache.logging.log4j:log4j-slf4j-impl:1.2.14')
+
 	testCompile 'junit:junit:${junit}' 
 }
 
