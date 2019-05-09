@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Property Placeholder location 설정들!
+		1.PropertyPlaceholderConfigurere Bean 정의 
+		2.context:property-placeholder 스키마 정의를 통한 설정
+		3.util:properties 스키마 정의를 통한 설정
+	-->
+	
+	<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/META-INF/properties/myprop.prop</value>
+				<value>classpath:/META-INF/properties/jdbc.prop</value>									
+			</list>		
+		</property>
+	</bean>
+	
+		
+	<!--context 스키마의 property-placeholder 를 활용한  property file location 설정 -->
+	<!--context:property-placeholder order="0" location="classpath:/META-INF/properties/*.prop" /-->
+	
+	<!-- PropertyPlaceholderConfigurer Beans정의를 통한 property file location 설정 -->
+	<!-- bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/META-INF/properties/jdbc.prop</value>
+			</list>
+		</property>		 		
+		<property name="fileEncoding" value="utf-8" />		
+	</bean -->
+	
+	<!-- util 스키마의 properties 속성을 활용한 property file location 설정  -->
+	<!-- util:properties id="jdbc" location="classpath:/META-INF/properties/jdbc.prop" /-->
+	
+</beans>

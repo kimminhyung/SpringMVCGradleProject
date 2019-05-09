@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		
+
+
+	<!-- context:property-placeholder 혹은 PropertyPlaceholderConfigurer로 설정시 ${}로 참조 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+	 	<property name="driverClassName" value="${jdbc.driverClassName}"/>
+	 	<property name="url" value="${jdbc.url}" />
+	 	<property name="username" value="${jdbc.user}"/>
+	 	<property name="password" value="${jdbc.password}"/>
+	 	<property name="maxActive" value="${jdbc.maxActive}" />  	
+	</bean>
+	<!-- util:스키마로 프라퍼티 설정시 #{}로 참조 -->
+	<!-- bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+	 	<property name="driverClassName" value="#{jdbc['jdbc.driverClassName']}"/>
+	 	<property name="url" value="#{jdbc['jdbc.url']}" />
+	 	<property name="username" value="#{jdbc['jdbc.user']}"/>
+	 	<property name="password" value="#{jdbc['jdbc.password']}"/>
+	 	<property name="maxActive" value="#{jdbc['jdbc.maxActive']}" />  	
+	</bean -->
+
+</beans>

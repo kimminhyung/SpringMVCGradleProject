@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//src/main/resources/META-INF/properties/jdbc.prop=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jsp/code/codeRegist.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jsp/innerContentsHome.jsp=UTF-8
